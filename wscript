@@ -9,8 +9,8 @@ def configure(conf):
 def build(bld):
 #    linkerpath=os.path.abspath(os.path.join('..', 'elf-loader','ldso'))
     bld.build_a_script('dce', needed = ['core', 'internet', 'dce', 'point-to-point', 'netanim' ],
-				  target='bin/dce-ping',
-				  source=['dce-ping.cc', 'misc-tools.cc'],
+				  target='bin/boogy',
+				  source=['boogy.cc'],
 #				  linkflags=['-Wl,--dynamic-linker=' + linkerpath ]
 #				  linkflags=['-L/usr/local/lib'],
 #				  lib=['foolib']
