@@ -72,7 +72,7 @@ int main (int argc, char *argv[])
       pointToPoint.SetChannelAttribute ("Delay", StringValue ("10ms"));
       devices1 = pointToPoint.Install (nodes.Get (0), routers.Get (1));
       // Assign ip addresses
-      Ipv4InterfaceContainer if1 = address1.Assign (devices1);
+      if1 = address1.Assign (devices1);
       address1.NewNetwork ();
       // setup ip routes
       cmd_oss.str ("");
@@ -91,7 +91,7 @@ int main (int argc, char *argv[])
       // Right link
       pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("10Mbps"));
       pointToPoint.SetChannelAttribute ("Delay", StringValue ("10ms"));
-      devices2 = pointToPoint.Install (nodes.Get (1), routers.Get (i));
+      devices2 = pointToPoint.Install (nodes.Get (1), routers.Get (0));
       // Assign ip addresses
       Ipv4InterfaceContainer if2 = address2.Assign (devices2);
       address2.NewNetwork ();
@@ -111,9 +111,9 @@ int main (int argc, char *argv[])
       
       pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("10Mbps"));
       pointToPoint.SetChannelAttribute ("Delay", StringValue ("10ms"));
-      devices2 = pointToPoint.Install (nodes.Get (1), routers.Get (i));
+      devices2 = pointToPoint.Install (nodes.Get (1), routers.Get (1));
       // Assign ip addresses
-      Ipv4InterfaceContainer if2 = address2.Assign (devices2);
+      if2 = address2.Assign (devices2);
       address2.NewNetwork ();
       // setup ip routes
       cmd_oss.str ("");
