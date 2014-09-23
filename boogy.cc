@@ -182,22 +182,10 @@ int main (int argc, char *argv[])
   
   LinuxStackHelper::RunIp (nodes.Get (0), Seconds (13), "link set up dev sim1");
   LinuxStackHelper::RunIp (routers.Get (1), Seconds (13), "link set up dev sim0");
-  if2 = address2.Assign (devices2);
-  address2.NewNetwork ();
-      // setup ip routes
-      cmd_oss.str ("");
-      cmd_oss << "rule add from " << if2.GetAddress (0, 0) << " table " << (2);
-      LinuxStackHelper::RunIp (nodes.Get (1), Seconds (14), cmd_oss.str ().c_str ());
-      cmd_oss.str ("");
-      cmd_oss << "route add 10.2." << 2 << ".0/24 dev sim" << 1 << " scope link table " << (2);
-      LinuxStackHelper::RunIp (nodes.Get (1), Seconds (14), cmd_oss.str ().c_str ());
-      cmd_oss.str ("");
-      cmd_oss << "route add default via " << if2.GetAddress (1, 0) << " dev sim" << 1 << " table " << (2);
-      LinuxStackHelper::RunIp (nodes.Get (1), Seconds (14), cmd_oss.str ().c_str ());
-      cmd_oss.str ("");
-      cmd_oss << "route add 10.2.2.0/24 via " << if2.GetAddress (1, 0) << " dev sim1";
-      LinuxStackHelper::RunIp (routers.Get (1), Seconds (14), cmd_oss.str ().c_str ());
-      
+  LinuxStackHelper::RunIp (nodes.Get (0), Seconds (13.5), "addr list");
+  LinuxStackHelper::RunIp (nodes.Get (0), Seconds (13.5), "route show table all");
+  LinuxStackHelper::RunIp (routers.Get (1), Seconds (13.5), "addr list");
+  LinuxStackHelper::RunIp (routers.Get (1), Seconds (13.5), "route show table all");
   
   LinuxStackHelper::RunIp (nodes.Get (0), Seconds (14), "route add default via 10.1.0.2 dev sim0");
   
