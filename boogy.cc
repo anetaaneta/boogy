@@ -177,8 +177,8 @@ int main (int argc, char *argv[])
   setPos (nodes.Get (0), 0, 20 * (nRtrs - 1) / 2, 0);
   setPos (nodes.Get (1), 100, 20 * (nRtrs - 1) / 2, 0);
   
-  LinuxStackHelper::RunIp (nodes.Get (0), Seconds (11), "link set sim1 down");
-  LinuxStackHelper::RunIp (routerss.Get (1), Seconds (11), "link set sim0 down");
+  LinuxStackHelper::RunIp (nodes.Get (0), Seconds (11), "link set down dev sim1");
+  LinuxStackHelper::RunIp (routers.Get (1), Seconds (11), "link set down dev sim0");
   
 
   Simulator::Stop (Seconds (200.0));
